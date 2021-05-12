@@ -31,12 +31,24 @@ var Indicator = class CIndicator extends PanelMenu.Button {
     _init() {
         super._init(0.0, `${Me.metadata.name} Indicator`, false);
         this.coins = [];
+
+        let gicon = Gio.icon_new_for_string(Me.path + "/images/binance.png");
+        let icon = new St.Icon({ 
+            gicon,
+            style_class: 'system-status-icon binance-logo',
+        });
+
         menuItem = new St.Label({
             text: 'Crypto',
             y_expand: true,
             y_align: Clutter.ActorAlign.CENTER,
         });
-        this.actor.add_child(menuItem);
+
+        let hbox = new St.BoxLayout({ x_expand: true });
+        hbox.add(icon);
+        hbox.add(menuItem);
+
+        this.actor.add_child(hbox);
 
         this.coinSection = new PopupMenu.PopupMenuSection();
         this.menu.addMenuItem(this.coinSection);
