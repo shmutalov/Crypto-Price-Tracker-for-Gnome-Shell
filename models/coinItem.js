@@ -71,7 +71,8 @@ var CoinItem = GObject.registerClass(
             this.symbol = symbol;
             this.activeCoin = active;
             this.title = title;
-            this.timeOutTage;
+            this.timeOutTag = 0;
+            this.oldPrice = 0;
 
             if (active) this._activeCoin();
             this._startTimer();
@@ -127,12 +128,27 @@ var CoinItem = GObject.registerClass(
                 i++;
             }
             if (+price == 0)
+            {
                 for (let i = len; i < priceParts[1].length; i++) {
                     price += priceParts[1][i];
                 }
+            }    
 
-            if (this.activeCoin) menuItem.text = `${this.title||this.symbol}   ${price}`;
+            let diff = price - this.oldPrice;
+            let color = "";
+            if (diff != 0) {
+                color = diff > 0 ? "-up" : "-down";
+            }
+            
+            if (this.activeCoin) {
+                log(`style: ${Constants.COIN_TEXT_STYLE + color}`);
+
+                menuItem.style_class = Constants.COIN_TEXT_STYLE + color;
+                menuItem.text = `${this.title||this.symbol}   ${price}`;
+            }
+
             this.label.text = `${this.title||this.symbol}    ${price}     `;
+            this.oldPrice = price;
         }
         get state() {
             return this._switch.state;

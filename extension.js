@@ -42,6 +42,7 @@ var Indicator = class CIndicator extends PanelMenu.Button {
             text: 'Crypto',
             y_expand: true,
             y_align: Clutter.ActorAlign.CENTER,
+            style_class: 'crypto-ticker-text',
         });
 
         let hbox = new St.BoxLayout({ x_expand: true });
