@@ -1,5 +1,5 @@
 <schemalist gettext-domain="gnome-shell-extension-crypto-tracker">
-  <schema id="org.gnome.shell.extensions.crypto-tracker" path="/org/gnome/shell/extensions/crypto-tracker/">
+  <schema id="org.gnome.shell.extensions.ext-crypto-tracker" path="/org/gnome/shell/extensions/ext-crypto-tracker/">
     <key type="s" name="coins">
       <default>'{"coins":[{"symbol":"BTC/USDT", "active": true, "title":"BTC"}]}'</default>
       <description />

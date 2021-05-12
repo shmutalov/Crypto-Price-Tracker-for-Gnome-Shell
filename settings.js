@@ -1,9 +1,8 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const convenience = Me.imports.convenience;
-const Schema = convenience.getSettings(
-    'org.gnome.shell.extensions.crypto-tracker'
-);
+const Constants = Me.imports.constants;
+const Schema = convenience.getSettings(Constants.SETTINGS_PATH);
 
 var getCoins = function () {
     let coinJsonStr = String(Schema.get_string('coins'));

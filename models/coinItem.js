@@ -13,10 +13,8 @@ const Me = ExtensionUtils.getCurrentExtension();
 const Binance = Me.imports.api.binance;
 const Settings = Me.imports.settings;
 const convenience = Me.imports.convenience;
-
-const Schema = convenience.getSettings(
-    'org.gnome.shell.extensions.crypto-tracker'
-);
+const Constants = Me.imports.constants;
+const Schema = convenience.getSettings(Constants.SETTINGS_PATH);
 
 const PopupMenu = imports.ui.popupMenu;
 
